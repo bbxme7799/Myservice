@@ -13,7 +13,7 @@ const formatDate = (dateString) => {
 
 export const getServerSideProps = async (context) => {
   try {
-    const response = await axios.get(`${API_BASE_URL_CSR}/api/users/me`, {
+    const response = await axios.get(`${API_BASE_URL_SSR}/api/users/me`, {
       // Use API_BASE_URL here
       headers: { cookie: context.req.headers.cookie },
       withCredentials: true,
