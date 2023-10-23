@@ -29,9 +29,13 @@ app.use(
   })
 );
 
+const whitelist = ["http://myservicestore.store","http://localhost:3000"];
+
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: (origin, callback) => {
+      callback(null,whitelist.includes(origin))
+    },
     credentials: true,
   })
 );
