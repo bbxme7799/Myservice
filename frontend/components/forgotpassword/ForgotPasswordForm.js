@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 import { useRouter } from "next/router";
 
-const API_BASE_URL = process.env.BACKEND_URL; // Added API_BASE_URL
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 
 const ForgotPasswordForm = () => {
   const [email, setEmail] = useState("");

@@ -3,8 +3,7 @@ import Modal from "./Modal";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-const API_BASE_URL = process.env.BACKEND_URL;
-
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 const ProductList = ({ products }) => {
   const [activeDropdowns, setActiveDropdowns] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);

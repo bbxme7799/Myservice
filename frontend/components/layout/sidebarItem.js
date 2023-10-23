@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 
 const SidebarItem = ({ icon, text, href }) => {
   return (

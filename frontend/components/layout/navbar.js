@@ -5,7 +5,7 @@ import axios from "axios";
 import Image from "next/image";
 import busdIcon from "../icons/binance-usd-busd-logo.png";
 
-const API_BASE_URL = process.env.BACKEND_URL; // Added API_BASE_URL
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 
 const Navbar = ({ me }) => {
   const [usdToThbRate, setUsdToThbRate] = useState(null);

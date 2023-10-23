@@ -3,7 +3,8 @@ import axios from "axios";
 import MainHeader from "@/components/layout/main-header";
 import { useState, useEffect } from "react";
 
-const API_BASE_URL = process.env.BACKEND_URL; // Add this line
+const API_BASE_URL_SSR = process.env.BACKEND_URL_SSR;
+const API_BASE_URL_CSR = process.env.BACKEND_URL_CSR;
 
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "short", day: "numeric" };
@@ -12,7 +13,7 @@ const formatDate = (dateString) => {
 
 export const getServerSideProps = async (context) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/api/users/me`, {
+    const response = await axios.get(`${API_BASE_URL_SSR}/api/users/me`, {
       // Use API_BASE_URL here
       headers: { cookie: context.req.headers.cookie },
       withCredentials: true,

@@ -3,8 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-const API_BASE_URL = process.env.BACKEND_URL;
-
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 const SidebarAdmin = () => {
   const router = useRouter();
   const handleSignOut = async () => {

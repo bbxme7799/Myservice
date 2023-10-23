@@ -15,11 +15,12 @@ import MainHeader from "@/components/layout/main-header";
 import axios from "axios";
 import SearchInput from "@/components/serviceTable/SearchInput";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL_SSR = process.env.BACKEND_URL_SSR;
+const API_BASE_URL_CSR = process.env.BACKEND_URL_CSR;
 
 export const getServerSideProps = async (context) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/api/users/me`, {
+    const response = await axios.get(`${API_BASE_URL_SSR}/api/users/me`, {
       headers: { cookie: context.req.headers.cookie },
       withCredentials: true,
     });
@@ -69,7 +70,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let apiUrl = `${API_BASE_URL}/api/products?page=${currentPage}&per_page=10`;
+        let apiUrl = `${API_BASE_URL_CSR}/api/products?page=${currentPage}&per_page=10`;
 
         if (searchQuery) {
           apiUrl += `&keyword=${encodeURIComponent(searchQuery)}`;

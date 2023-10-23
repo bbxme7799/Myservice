@@ -8,7 +8,7 @@ import SignupButton from "../../components/signup/SignupButton";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 const frontendUrl = process.env.FRONTEND_URL;
 
 const SignInSection = () => {

@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 const frontendURL = process.env.FRONTEND_URL;
 
 const SignInSection = () => {

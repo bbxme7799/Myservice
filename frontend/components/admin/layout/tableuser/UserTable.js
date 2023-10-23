@@ -3,7 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import EditModal from "./EditModal";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 
 const UserTable = ({ users }) => {
   const [currentPage, setCurrentPage] = useState(1);

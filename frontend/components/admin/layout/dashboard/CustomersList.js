@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 
 const CustomersList = () => {
   const [users, setUsers] = useState([]);

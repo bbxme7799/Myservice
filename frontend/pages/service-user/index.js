@@ -7,7 +7,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import SearchInput from "@/components/serviceTable/SearchInput";
 
-const API_BASE_URL = process.env.BACKEND_URL; // Add this line
+const API_BASE_URL_SSR = process.env.BACKEND_URL_SSR;
+const API_BASE_URL_CSR = process.env.BACKEND_URL_CSR;
 
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "short", day: "numeric" };
@@ -16,7 +17,7 @@ const formatDate = (dateString) => {
 
 export const getServerSideProps = async (context) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/api/users/me`, {
+    const response = await axios.get(`${API_BASE_URL_SSR}/api/users/me`, {
       headers: { cookie: context.req.headers.cookie },
       withCredentials: true,
     });
@@ -58,7 +59,7 @@ export default function SerivceUserPage({ me }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let apiUrl = `${API_BASE_URL}/api/products?page=${currentPage}&per_page=20`;
+        let apiUrl = `${API_BASE_URL_CSR}/api/products?page=${currentPage}&per_page=20`;
 
         if (searchQuery) {
           apiUrl += `&keyword=${encodeURIComponent(searchQuery)}`;

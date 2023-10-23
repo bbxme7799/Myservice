@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import PageMetadata from "@/components/PageMetadata";
 import MainHeader from "@/components/layout/main-header";
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL_SSR = process.env.BACKEND_URL_SSR;
+const API_BASE_URL_CSR = process.env.BACKEND_URL_CSR;
 export default function PostDetail() {
   const router = useRouter();
   const { id } = router.query;
@@ -14,7 +15,7 @@ export default function PostDetail() {
     const fetchData = async () => {
       try {
         if (id) {
-          const response = await axios.get(`${API_BASE_URL}/api/blog/${id}`);
+          const response = await axios.get(`${API_BASE_URL_CSR}/api/blog/${id}`);
           setPost(response.data);
         }
       } catch (error) {

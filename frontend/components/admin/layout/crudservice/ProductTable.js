@@ -3,7 +3,7 @@ import ProductList from "./ProductList";
 import ModalOverlay from "./ModalOverlay";
 import axios from "axios";
 import SearchInput from "./SearchInput";
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 
 const ProductTable = () => {
   const [perPage, setPerPage] = useState(10); // กำหนดค่าเริ่มต้นให้เป็น 10

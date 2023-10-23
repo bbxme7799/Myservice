@@ -6,11 +6,13 @@ import axios from "axios";
 import OrderDetailsModal from "@/components/admin/layout/reportsorder/OrderDetailsModal"; // Update the path
 import StatusBadge from "@/components/admin/layout/reportsorder/StatusBadge";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL_SSR = process.env.BACKEND_URL_SSR;
+const API_BASE_URL_CSR = process.env.BACKEND_URL_CSR;
+
 
 export const getServerSideProps = async (context) => {
   const me = await axios
-    .get(`${API_BASE_URL}/api/users/me`, {
+    .get(`${API_BASE_URL_SSR}/api/users/me`, {
       headers: { cookie: context.req.headers.cookie },
       withCredentials: true,
     })
@@ -69,7 +71,7 @@ export default function ReportOrderPage() {
 
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/api/orders/getallorder`, {
+      .get(`${API_BASE_URL_CSR}/api/orders/getallorder`, {
         withCredentials: true,
       })
       .then((response) => {

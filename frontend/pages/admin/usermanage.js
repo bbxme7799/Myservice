@@ -5,11 +5,13 @@ import PageMetadata from "@/components/PageMetadata";
 import UserTable from "@/components/admin/layout/tableuser/UserTable";
 import axios from "axios";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL_SSR = process.env.BACKEND_URL_SSR;
+const API_BASE_URL_CSR = process.env.BACKEND_URL_CSR;
+
 
 export const getServerSideProps = async (context) => {
   const me = await axios
-    .get(`${API_BASE_URL}/api/users/me`, {
+    .get(`${API_BASE_URL_SSR}/api/users/me`, {
       headers: { cookie: context.req.headers.cookie },
       withCredentials: true,
     })
@@ -48,7 +50,7 @@ export default function UserManagePage() {
 
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/api/users/getusers`, {
+      .get(`${API_BASE_URL_CSR}/api/users/getusers`, {
         withCredentials: true,
       })
       .then((response) => {

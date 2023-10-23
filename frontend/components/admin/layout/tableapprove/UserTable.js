@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import EditModal from "./EditModal";
 import StatusBadge from "./StatusBadge";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 
 const ApproveTable = ({ users }) => {
   const handleRejectWithdraw = async (withdrawId) => {

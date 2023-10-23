@@ -4,7 +4,7 @@ import React, { memo } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-const API_BASE_URL = process.env.BACKEND_URL; // Added API_BASE_URL
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 
 const links = [
   {

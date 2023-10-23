@@ -2,32 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 
-export const getServerSideProps = async (context) => {
-  const me = await axios
-    .get(`${API_BASE_URL}/api/users/me`, {
-      headers: { cookie: context.req.headers.cookie },
-      withCredentials: true,
-    })
-    .then((response) => response.data)
-    .catch(() => null);
-
-  console.log("user/me info => ", me);
-  if (!me) {
-    return {
-      redirect: {
-        destination: "/users/signin",
-        permanent: false,
-      },
-    };
-  }
-  return {
-    props: {
-      me,
-    },
-  };
-};
 
 const Modal = ({ isOpen, onClose, category, me }) => {
   const [editedProduct, setEditedProduct] = useState(category);

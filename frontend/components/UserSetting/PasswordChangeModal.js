@@ -3,7 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const API_BASE_URL = process.env.BACKEND_URL; // เพิ่มบรรทัดนี้
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 
 const PasswordChangeModal = ({ isOpen, onClose }) => {
   const [currentPassword, setCurrentPassword] = useState("");

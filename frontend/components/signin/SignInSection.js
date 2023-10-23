@@ -10,7 +10,7 @@ import SignInButton from "../../components/signin/SignInButton";
 import Web3 from "web3";
 import { useRouter } from "next/router";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 const frontendUrl = process.env.FRONTEND_URL;
 
 const SignInSection = () => {

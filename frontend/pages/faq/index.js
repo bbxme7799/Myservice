@@ -2,13 +2,15 @@ import Question from "../../components/faq/Question";
 import axios from "axios";
 import MainHeader from "@/components/layout/main-header";
 
-const API_BASE_URL = process.env.BACKEND_URL; // Add this line
+const API_BASE_URL_SSR = process.env.BACKEND_URL_SSR;
+const API_BASE_URL_CSR = process.env.BACKEND_URL_CSR;
+
 
 export const getServerSideProps = async (context) => {
   try {
     let me = null;
 
-    const response = await axios.get(`${API_BASE_URL}/api/users/me`, {
+    const response = await axios.get(`${API_BASE_URL_SSR}/api/users/me`, {
       headers: { cookie: context.req.headers.cookie },
       withCredentials: true,
     });

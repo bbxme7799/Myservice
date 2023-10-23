@@ -4,7 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import SidebarItem from "./sidebarItem";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 
 const Sidebar = () => {
   const router = useRouter();

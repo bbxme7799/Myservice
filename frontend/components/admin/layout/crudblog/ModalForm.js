@@ -4,7 +4,7 @@ import { parse } from "dotenv";
 import Swal from "sweetalert2";
 import dynamic from "next/dynamic"; // Import dynamic from 'next/dynamic'
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 
 // Dynamically import ReactQuillEditor only on the client side
 const ReactQuillEditor = dynamic(() => import("./ReactQuillEditor"), {

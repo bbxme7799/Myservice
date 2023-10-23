@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
 
 const CartProduct = ({ product, onDelete, onChange }) => {
   const [editedUrl, setEditedUrl] = useState(product.url);
