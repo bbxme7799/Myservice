@@ -45,7 +45,7 @@ export const getServerSideProps = async (context) => {
 export default function BlogManagePage() {
   return (
     <>
-      <PageMetadata title="Category Management" />
+      <PageMetadata title="Blog Management" />
       <div className="flex flex-col">
         <NavbarAdmin />
         <div className="flex flex-1">

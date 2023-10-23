@@ -44,7 +44,7 @@ export const getServerSideProps = async (context) => {
 export default function WithdrawalPage() {
   return (
     <>
-      <PageMetadata title="User Management" />
+      <PageMetadata title="Report Withdraw" />
       <div className="flex flex-col">
         <NavbarAdmin />
         <div className="flex flex-1">
