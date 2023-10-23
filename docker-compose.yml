@@ -18,14 +18,37 @@ services:
       context: ./backend
       dockerfile: ./Dockerfile
     # command: npm run start:dev short_url
-    ports:
-      - '8000:8000'
+    # ports:
+    #   - '8000:8000'
     env_file:
       - ./backend/.env
     environment:
       DATABASE_URL: mysql://root:root@db:3306/marketing
     depends_on:
       - db
+  frontend:
+    container_name: frontend-service
+    restart: always
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    # command: npm run start:dev short_url
+    # ports:
+    #   - '3000:3000'
+    env_file:
+      - ./frontend/.env
+    depends_on:
+      - db
+      - backend
     # volumes:
     #   - ./backend:/usr/src/app
     #   - /usr/src/app/node_modules
+  nginx-proxy:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
+      - frontend
+    ports:
+      - 80:80

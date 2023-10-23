@@ -10,5 +10,5 @@ COPY . .
 EXPOSE 8000
 
 RUN npx prisma generate
-RUN npx prisma db push
+# RUN npx prisma db push
 CMD [ "npm", "start"]
