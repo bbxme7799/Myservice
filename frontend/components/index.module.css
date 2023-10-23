@@ -1,136 +1,135 @@
-/* Common styles */
-.container {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 0;
-}
+    .container {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+    }
 
-.position {
-  display: flex;
-  align-items: center;
-  gap: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  color: white;
-  width: 60%;
-  padding-top: 100px;
-}
+    .position {
+      display: flex;
+      align-items: center;
+      gap: 100px;
+      margin-left: auto;
+      margin-right: auto;
+      color: white;
+      width: 60%;
+      padding-top: 100px;
+    }
 
-.body {
-  clip-path: polygon(0 0, 100% 0%, 100% 78%, 0% 100%);
-  background-color: #111724;
-  height: 560px;
-  width: 100%;
-  align-items: center;
-  position: absolute;
-  z-index: 0;
-}
+    .body {
+      clip-path: polygon(0 0, 100% 0%, 100% 78%, 0% 100%);
+      background-color: #111724;
+      height: 560px;
+      width: 100%;
+      align-items: center;
+      position: absolute;
+      z-index: 0;
+    }
 
-.banner {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  width: 100%;
-}
+    .banner {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      width: 100%;
+    }
 
-.btnlogin {
-  @apply bg-[#1448FF] hover:bg-blue-700 py-0 px-4 rounded w-44 h-11;
-}
+    .btnlogin {
+      @apply bg-[#1448FF] hover:bg-blue-700 py-0 px-4 rounded w-44 h-11;
+    }
 
-.item {
-  z-index: 100;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+    .item {
+      z-index: 100;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-.img {
-  width: 350px;
-  height: 350px;
-  object-fit: cover;
-}
+    .img {
+      width: 350px;
+      height: 350px;
+      object-fit: cover;
+    }
 
-.title {
-  font-size: 40px;
-}
+    .title {
+      font-size: 40px;
+    }
 
-.desc {
-  font-size: 18px;
-  font-weight: 300;
-}
+    .desc {
+      font-size: 18px;
+      font-weight: 300;
+    }
 
-.card {
-  @apply bg-white h-[250px] rounded-xl shadow-lg border-[3px] border-gray-50 px-3 py-3;
-}
+    .card {
+      @apply bg-white h-[250px] rounded-xl shadow-lg border-[3px] border-gray-50 px-3 py-3;
+    }
 
-.bodycard {
-  @apply flex flex-col items-center;
-}
+    .bodycard {
+      @apply flex flex-col items-center;
+    }
 
-.cardimg {
-  @apply w-[4.5rem] pb-2;
-}
+    .cardimg {
+      @apply w-[4.5rem] pb-2;
+    }
 
-.cardtitle {
-  @apply font-semibold text-2xl pb-2;
-}
+    .cardtitle {
+      @apply font-semibold text-2xl pb-2;
+    }
 
-.carddesc {
-  @apply text-lg;
-}
+    .carddesc {
+      @apply text-lg;
+    }
 
-/* Media Queries */
-@media screen and (max-width: 1024px) {
-  .position {
-    width: 80%;
-  }
-  .img {
-    width: 250px;
-    height: 250px;
-  }
-  .title {
-    font-size: 32px;
-  }
-  .desc {
-    font-size: 16px;
-  }
-}
+    /* Media Queries */
+    @media screen and (max-width: 1024px) {
+      .position {
+        width: 80%;
+      }
+      .img {
+        width: 250px;
+        height: 250px;
+      }
+      .title {
+        font-size: 32px;
+      }
+      .desc {
+        font-size: 16px;
+      }
+    }
 
-@media screen and (max-width: 768px) {
-  .position {
-    flex-direction: column;
-    gap: 50px;
-  }
-  .body {
-    height: 300px;
-  }
-  .img {
-    width: 200px;
-    height: 200px;
-  }
-  .title {
-    font-size: 24px;
-  }
-  .desc {
-    font-size: 14px;
-  }
-}
+    @media screen and (max-width: 768px) {
+      .position {
+        flex-direction: column;
+        gap: 50px;
+      }
+      .body {
+        height: 300px;
+      }
+      .img {
+        width: 200px;
+        height: 200px;
+      }
+      .title {
+        font-size: 24px;
+      }
+      .desc {
+        font-size: 14px;
+      }
+    }
 
-@media screen and (max-width: 480px) {
-  .position {
-    width: 90%;
-  }
-  .title {
-    font-size: 20px;
-  }
-  .desc {
-    font-size: 12px;
-  }
-  .card {
-    width: 90%;
-  }
-}
+    @media screen and (max-width: 480px) {
+      .position {
+        width: 90%;
+      }
+      .title {
+        font-size: 20px;
+      }
+      .desc {
+        font-size: 12px;
+      }
+      .card {
+        width: 90%;
+      }
+    }

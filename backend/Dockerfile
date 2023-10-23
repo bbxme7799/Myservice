@@ -1,4 +1,4 @@
-FROM node:18-alpine AS base
+FROM node:18
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -10,4 +10,5 @@ COPY . .
 EXPOSE 8000
 
 RUN npx prisma generate
+RUN npx prisma db push
 CMD [ "npm", "start"]

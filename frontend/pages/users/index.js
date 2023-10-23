@@ -263,13 +263,15 @@ export default function User({ me }) {
     <>
       <PageMetadata title="Order" />
       <Layout me={me}> </Layout>
-      <div className="ml-[255px] mt-[65px] h-auto">
-        <div className="bg-white my-[2px] ">
-          <div className="flex mx-2 py-2 ">
-            <h1 className="font-bold text-lg"> New order :</h1>
-            <p className="text-lg pl-2"> คำสั่งซื้อใหม่</p>
-          </div>
-        </div>
+      <div className="ml-0 md:ml-[255px] mt-[65px] px-4 md:px-0 h-auto">
+      <div className="bg-white my-2 md:flex">
+  <div className="flex mx-2 py-2">
+    <h1 className="font-bold text-lg">New order :</h1>
+    <p className="text-lg pl-2">คำสั่งซื้อใหม่</p>
+  </div>
+</div>
+
+ 
         {/* <div className="mx-[50px] my-6  shadow-md">
           <div className="bg-yellow-300 h-auto rounded-lg px-8 py-8">
             <h1>ประกาศสำคัญ</h1>
@@ -277,9 +279,9 @@ export default function User({ me }) {
           </div>
         </div> */}
 
-        <div className="mx-[50px] my-6 shadow-md ">
-          <div className="bg-white h-auto rounded-lg px-8 py-8">
-            <div className="flex relative">
+<div className="mx-2 md:mx-[50px] my-6 shadow-md ">
+      <div className="bg-white h-auto rounded-lg px-4 md:px-8 py-8">
+        <div className="flex flex-wrap gap-4 md:content-start">
               <div className="w-full flex flex-wrap gap-4 content-start">
                 {categoriess.map(({ name, searchName, image }) => (
                   <CategoryButton
@@ -293,8 +295,8 @@ export default function User({ me }) {
             </div>
           </div>
         </div>
-        <div className="mx-[50px] my-6 shadow-md ">
-          <div className="bg-white h-auto rounded-lg px-4 py-4">
+        <div className="mx-2 md:mx-[50px] my-6 shadow-md ">
+      <div className="bg-white h-auto rounded-lg px-4 md:px-8 py-4">
             <div>
               <div className="mb-3">
                 <h2>หมวดหมู่</h2>

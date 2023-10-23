@@ -15,7 +15,7 @@ const CategoryButton = ({ name, image, onClick }) => (
           height={30} // Set the height to the desired size (e.g., 30px)
           className="mx-2 my-2 icon-size" // Add a class to control the max size
         />
-        <h2 className="mx-2">{name}</h2>
+        <h2 className="mx-2 text-sm md:text-base lg:text-lg xl:text-xl">{name}</h2>
       </div>
     </button>
   </div>

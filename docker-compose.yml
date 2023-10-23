@@ -1,0 +1,31 @@
+version: "3"
+services:
+  db:
+    image: mysql
+    container_name: db_margketing
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: marketing
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+  backend:
+    container_name: backend-service
+    restart: always
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    # command: npm run start:dev short_url
+    ports:
+      - '8000:8000'
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: mysql://root:root@db:3306/marketing
+    depends_on:
+      - db
+    # volumes:
+    #   - ./backend:/usr/src/app
+    #   - /usr/src/app/node_modules
