@@ -121,11 +121,15 @@ export const googleAuth = async (req, res, next) => {
       });
       if (existingEmail) {
         console.log("error case");
+        // res.redirect(
+        //   `${process.env.BACKEND_URL_CSR}/signin?error=${encodeURIComponent(
+        //     "Incorrect_Email"
+        //   )}`
+        // );
         res.redirect(
-          `${process.env.BACKEND_URL_CSR}/signin?error=${encodeURIComponent(
-            "Incorrect_Email"
+          `${process.env.BACKEND_URL_CSR}/incorrect
           )}`
-        );
+        );s
         return;
       } else {
         const created = await prisma.user.create({
