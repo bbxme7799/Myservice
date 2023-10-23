@@ -6,7 +6,8 @@ export const PassportGoogle = () =>
   passport.use(
     new GoogleStrategy(
       {
-        callbackURL: `http://localhost:${config.port}/api/auth/google/callback`,
+        // callbackURL: `http://localhost:${config.port}/api/auth/google/callback`,
+        callbackURL: `http://myservicestore.store/api/auth/google/callback`,
         clientID: config.googleClientId,
         clientSecret: config.googleClientSecret,
         passReqToCallback: true,
