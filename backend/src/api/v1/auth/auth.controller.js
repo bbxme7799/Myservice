@@ -30,7 +30,7 @@ export const sendVerificationEmail = async (
     html: `
     <p>Dear ${username},</p>
     <p>Thank you for registering with our platform. Please click the following link to verify your email:</p>
-    <a href="http://localhost:3000/users/signup/verify/?email=${email}&token=${verificationToken}">Verify Email</a>
+    <a href="http://188.166.238.15:3000/users/signup/verify/?email=${email}&token=${verificationToken}">Verify Email</a>
     <p>If you didn't register, please ignore this email.</p>
   `,
   };
@@ -122,7 +122,7 @@ export const googleAuth = async (req, res, next) => {
       if (existingEmail) {
         console.log("error case");
         res.redirect(
-          `http://localhost:3000/signin?error=${encodeURIComponent(
+          `http://188.166.238.15:3000/signin?error=${encodeURIComponent(
             "Incorrect_Email"
           )}`
         );
@@ -149,7 +149,7 @@ export const googleAuth = async (req, res, next) => {
         req.session = {
           jwt: userJwt,
         };
-        res.redirect(`http://localhost:3000/users`);
+        res.redirect(`http://188.166.238.15:3000/users`);
         //save and create account
         return;
       }
@@ -171,13 +171,13 @@ export const googleAuth = async (req, res, next) => {
       };
 
       if (existingAccount.is_banned) {
-        return res.redirect("http://localhost:3000/suspended");
+        return res.redirect("http://188.166.238.15:3000/suspended");
       }
 
       if (existingAccount.role === 1) {
-        res.redirect(`http://localhost:3000/admin`);
+        res.redirect(`http://188.166.238.15:3000/admin`);
       } else {
-        res.redirect(`http://localhost:3000/users`);
+        res.redirect(`http://188.166.238.15:3000/users`);
       }
       return;
     }
