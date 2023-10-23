@@ -2,9 +2,12 @@ import React from "react";
 
 import axios from "axios";
 import Layout from "@/components/layout/layout";
+const API_BASE_URL_SSR = process.env.BACKEND_URL_SSR;
+const API_BASE_URL_CSR = process.env.BACKEND_URL_CSR;
+
 export const getServerSideProps = async (context) => {
   const me = await axios
-    .get("http://localhost:8000/api/users/me", {
+    .get(`${API_BASE_URL_SSR}/api/users/me`, {
       headers: { cookie: context.req.headers.cookie },
       withCredentials: true,
     })

@@ -6,11 +6,13 @@ import SubTotal from "../../../components/cart/SubTotal";
 import CheckoutButton from "../../../components/cart/CheckoutButton";
 import Layout from "@/components/layout/layout";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL_SSR = process.env.BACKEND_URL_SSR;
+const API_BASE_URL_CSR = process.env.BACKEND_URL_CSR;
+
 
 export const getServerSideProps = async (context) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/api/users/me`, {
+    const response = await axios.get(`${API_BASE_URL_SSR}/api/users/me`, {
       headers: { cookie: context.req.headers.cookie },
       withCredentials: true,
     });
@@ -49,7 +51,7 @@ const CartPage = ({ me }) => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/api/carts`, {
+        const response = await axios.get(`${API_BASE_URL_CSR}/api/carts`, {
           headers: { cookie: document.cookie },
           withCredentials: true,
         });
@@ -111,7 +113,7 @@ const CartPage = ({ me }) => {
   const proceedWithCheckout = async () => {
     try {
       const userId = me.id;
-      const apiUrl = `${API_BASE_URL}/api/orders/${userId}`;
+      const apiUrl = `${API_BASE_URL_CSR}/api/orders/${userId}`;
 
       const requestData = {
         cartItems,

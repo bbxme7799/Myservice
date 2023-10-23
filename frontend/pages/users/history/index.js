@@ -6,11 +6,12 @@ import OrderStatusButtons from "../../../components/history/OrderStatusButtons";
 import OrderDetailsModal from "../../../components/user/orderhistory/OrderHistoryModal";
 import StatusBadge from "@/components/user/orderhistory/StatusBadge";
 
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL_SSR = process.env.BACKEND_URL_SSR;
+const API_BASE_URL_CSR = process.env.BACKEND_URL_CSR;
 
 export const getServerSideProps = async (context) => {
   const me = await axios
-    .get(`${API_BASE_URL}/api/users/me`, {
+    .get(`${API_BASE_URL_SSR}/api/users/me`, {
       headers: { cookie: context.req.headers.cookie },
       withCredentials: true,
     })
@@ -59,7 +60,7 @@ function index({ me }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/api/orders`, {
+        const response = await axios.get(`${API_BASE_URL_CSR}/api/orders`, {
           withCredentials: true,
         });
         console.log("🚀 ~ file: index.js:65 ~ fetchData ~ response:", response);
@@ -67,7 +68,7 @@ function index({ me }) {
         setOrderData(response.data.data);
 
         const orderPromises = await response.data.data.map((order) =>
-          axios.get(`${API_BASE_URL}/api/orders/${order.id}`, {
+          axios.get(`${API_BASE_URL_CSR}/api/orders/${order.id}`, {
             withCredentials: true,
           })
         );

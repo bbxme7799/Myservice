@@ -8,12 +8,12 @@ import Layout from "@/components/layout/layout";
 import Image from "next/image";
 import Metamaskiconlogin from "../../../components/icons/Metamaskiconlogin.png";
 
-// Add this line to get the API base URL from environment variables
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL_SSR = process.env.BACKEND_URL_SSR;
+const API_BASE_URL_CSR = process.env.BACKEND_URL_CSR;
 
 export const getServerSideProps = async (context) => {
   const me = await axios
-    .get(`${API_BASE_URL}/api/users/me`, {
+    .get(`${API_BASE_URL_SSR}/api/users/me`, {
       // Use API_BASE_URL to construct the URL
       headers: { cookie: context.req.headers.cookie },
       withCredentials: true,
@@ -80,7 +80,7 @@ export default function WithdrawPage({ me }) {
 
       // Send a POST request to the withdrawal API
       const response = await axios.post(
-        `${API_BASE_URL}/api/transactoins/request-withdraw`, // Use API_BASE_URL to construct the URL
+        `${API_BASE_URL_CSR}/api/transactoins/request-withdraw`, // Use API_BASE_URL to construct the URL
         {
           amount: amount,
           walletPublicKey: walletAddress,

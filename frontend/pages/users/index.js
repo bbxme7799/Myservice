@@ -14,6 +14,10 @@ import Layout from "@/components/layout/layout";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const API_BASE_URL_SSR = process.env.BACKEND_URL_SSR;
+const API_BASE_URL_CSR = process.env.BACKEND_URL_CSR;
+
+
 const categoriess = [
   { name: "Youtube", searchName: "Youtube", image: YtIcon },
   { name: "Facebook", searchName: "Facebook", image: FacebookIcon },
@@ -41,7 +45,6 @@ export default function User({ me }) {
   const [quantity, setQuantity] = useState(0); // เพิ่ม state variable สำหรับเก็บปริมาณ
   const [isInputValid, setIsInputValid] = useState(false); // เพิ่ม state variable สำหรับเช็คข้อมูล input
 
-  const API_BASE_URL = process.env.BACKEND_URL;
   const findSimilarCategory = (searchTerm) => {
     if (!searchTerm) return null;
 
@@ -73,7 +76,7 @@ export default function User({ me }) {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await axios.get(`${API_BASE_URL}/api/categories`);
+        const response = await axios.get(`${API_BASE_URL_CSR}/api/categories`);
         const { data, total_page } = response.data;
         setPerPage(total_page); // Set perPage to total_page for now
 
@@ -81,7 +84,7 @@ export default function User({ me }) {
         const allCategories = [];
         for (let page = 1; page <= total_page; page++) {
           const pageResponse = await axios.get(
-            `${API_BASE_URL}/api/categories?page=${page}`
+            `${API_BASE_URL_CSR}/api/categories?page=${page}`
           );
           const pageData = pageResponse.data.data;
           allCategories.push(...pageData);
@@ -101,7 +104,7 @@ export default function User({ me }) {
     async function fetchProductData() {
       try {
         if (selectedCategory !== "") {
-          const response = await axios.get(`${API_BASE_URL}/api/products`, {
+          const response = await axios.get(`${API_BASE_URL_CSR}/api/products`, {
             params: {
               keyword: selectedCategory,
             },
@@ -153,7 +156,7 @@ export default function User({ me }) {
 
           // Make the POST request to the API endpoint
           const response = await axios.post(
-            `${API_BASE_URL}/api/carts/${selectedProduct.service}`,
+            `${API_BASE_URL_CSR}/api/carts/${selectedProduct.service}`,
             requestData,
             {
               withCredentials: true,
@@ -213,7 +216,7 @@ export default function User({ me }) {
 
           // ส่งคำสั่งซื้อผ่าน API ที่คุณสร้างขึ้น
           const response = await axios.post(
-            `${API_BASE_URL}/api/orders/buynow/${selectedProduct.service}`,
+            `${API_BASE_URL_CSR}/api/orders/buynow/${selectedProduct.service}`,
             requestData,
             {
               withCredentials: true,
@@ -441,9 +444,8 @@ export default function User({ me }) {
 }
 
 export const getServerSideProps = async (context) => {
-  const API_BASE_URL = process.env.BACKEND_URL;
   const me = await axios
-    .get(`${API_BASE_URL}/api/users/me`, {
+    .get(`${API_BASE_URL_SSR}/api/users/me`, {
       headers: { cookie: context.req.headers.cookie },
       withCredentials: true,
     })
