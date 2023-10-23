@@ -38,12 +38,14 @@ const options = {
   },
 };
 
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
+
 const SalesReport = () => {
   const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/orders/statistic")
+      .get(`${API_BASE_URL}/api/orders/statistic`)
       .then((response) => {
         const data = response.data.data; // Extract data array from the response
 
