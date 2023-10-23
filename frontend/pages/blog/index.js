@@ -13,7 +13,7 @@ const formatDate = (dateString) => {
 
 export const getServerSideProps = async (context) => {
   try {
-    const response = await axios.get(`${API_BASE_URL_SSR}/api/users/me`, {
+    const response = await axios.get(`${API_BASE_URL_CSR}/api/users/me`, {
       // Use API_BASE_URL here
       headers: { cookie: context.req.headers.cookie },
       withCredentials: true,
@@ -53,7 +53,7 @@ export default function BlogPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/api/blog`); // Use API_BASE_URL here
+        const response = await axios.get(`${API_BASE_URL_CSR}/api/blog`); // Use API_BASE_URL here
         setPosts(response.data.data);
       } catch (error) {
         console.error("Error fetching data:", error);
