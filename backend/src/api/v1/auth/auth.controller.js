@@ -126,10 +126,7 @@ export const googleAuth = async (req, res, next) => {
         //     "Incorrect_Email"
         //   )}`
         // );
-        res.redirect(
-          `${process.env.BACKEND_URL_CSR}/incorrect
-          )}`
-        );
+        res.redirect(`${process.env.BACKEND_URL_CSR}/incorrect`);
         return;
       } else {
         const created = await prisma.user.create({
