@@ -3,6 +3,8 @@ import Modal from "./EditModal";
 import Swal from "sweetalert2";
 import axios from "axios";
 
+const API_BASE_URL = process.env.BACKEND_URL_CSR;
+
 const CategoryList = ({ categorys }) => {
   const [activeDropdowns, setActiveDropdowns] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);

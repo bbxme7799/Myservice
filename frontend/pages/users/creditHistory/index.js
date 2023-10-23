@@ -159,29 +159,32 @@ function index({ me }) {
                         </tr>
                       ) : (
                         records.map((item) => (
-                          <tr key={item.id} className="border-b-2">
-                            <td className="text-left ">
-                              <p className="mx-2 my-3">{item.id}</p>
-                            </td>
-                            <td className="text-left ">
-                              <p className="my-3 ">Metamask</p>
-                            </td>
-                            <td className="text-left ">
-                              <p className="my-3 ">{item.amount}</p>
-                            </td>
-                            <td className="text-center ">
-                              <p className="my-3">{item.amount}</p>
-                            </td>
-                            <td className="text-center ">
-                              <StatusBadge status={item.status} />
-                            </td>
-                            <td className="text-center ">
-                              <p className="my-3">
-                                {formatThaiDateTime(item.createdAt)}
-                              </p>
-                            </td>
-                          </tr>
-                        ))
+                          // เพิ่มเงื่อนไขที่ตรวจสอบว่า status ไม่เท่ากับ "WITHDRAW"
+                          item.status !== "WITHDRAW" && (
+                            <tr key={item.id} className="border-b-2">
+                              <td className="text-left ">
+                                <p className="mx-2 my-3">{item.id}</p>
+                              </td>
+                              <td className="text-left ">
+                                <p className="my-3 ">Metamask</p>
+                              </td>
+                              <td className="text-left ">
+                                <p className="my-3 ">{item.amount}</p>
+                              </td>
+                              <td className="text-center ">
+                                <p className="my-3">{item.amount}</p>
+                              </td>
+                              <td className="text-center ">
+                                <StatusBadge status={item.status} />
+                              </td>
+                              <td className="text-center ">
+                                <p className="my-3">
+                                  {formatThaiDateTime(item.createdAt)}
+                                </p>
+                              </td>
+                            </tr>
+                          )
+                        ))                        
                       )}
                     </tbody>
                   </table>
