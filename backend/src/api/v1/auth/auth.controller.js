@@ -129,7 +129,7 @@ export const googleAuth = async (req, res, next) => {
         res.redirect(
           `${process.env.BACKEND_URL_CSR}/incorrect
           )}`
-        );s
+        );
         return;
       } else {
         const created = await prisma.user.create({
