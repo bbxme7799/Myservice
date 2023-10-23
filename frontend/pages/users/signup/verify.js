@@ -3,8 +3,8 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-// Add this line to get the API base URL from environment variables
-const API_BASE_URL = process.env.BACKEND_URL;
+const API_BASE_URL_SSR = process.env.BACKEND_URL_SSR;
+const API_BASE_URL_CSR = process.env.BACKEND_URL_CSR;
 
 export default function VerifyPage() {
   const router = useRouter();
@@ -13,7 +13,7 @@ export default function VerifyPage() {
   const verifyEmail = async () => {
     try {
       // Use API_BASE_URL to construct the verifyUrl
-      const verifyUrl = `${API_BASE_URL}/api/auth/verify/${router.query.email}?token=${router.query.token}`;
+      const verifyUrl = `${API_BASE_URL_CSR}/api/auth/verify/${router.query.email}?token=${router.query.token}`;
       const response = await axios.get(verifyUrl);
       console.log(
         "🚀 ~ file: verify.js:14 ~ verifyEmail ~ response:",
