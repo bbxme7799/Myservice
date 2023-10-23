@@ -1,9 +1,13 @@
-import React from "react";
+import { useRouter } from "next/router";
 
 const SuspendedPage = () => {
+  const router = useRouter();
+
   const contactAdmin = () => {
     // ทำการติดต่อผู้ดูแล โดยใช้วิธีที่คุณต้องการ เช่น ส่งอีเมลหรือโทรศัพท์
-    alert("ติดต่อผู้ดูแลระบบ");
+
+    // ตัวอย่าง: เมื่อคลิกปุ่ม "ติดต่อผู้ดูแล" คุณสามารถนำผู้ใช้ไปยังหน้า `/users/signin`
+    router.push("/users/signin");
   };
 
   return (
@@ -13,10 +17,10 @@ const SuspendedPage = () => {
         โปรดเข้าสู่ระบบด้วยอีเมลที่คุณทำการลงทะเบียนไว้
       </p>
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded"
+        className="bg-blue-500 hover-bg-blue-700 text-white font-bold py-3 px-6 rounded"
         onClick={contactAdmin}
       >
-        ติดต่อผู้ดูแล
+        กลับไปหน้าเข้าสู่ระบบ
       </button>
     </div>
   );
