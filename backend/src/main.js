@@ -29,7 +29,7 @@ app.use(
   })
 );
 
-const whitelist = ["http://myservicestore.store","http://localhost:3000"];
+const whitelist = ["http://myservicestore.store","http://localhost:3000","http://www.myservicestore.store"];
 
 app.use(
   cors({
