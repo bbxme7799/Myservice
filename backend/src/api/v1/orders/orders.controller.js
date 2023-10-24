@@ -125,25 +125,25 @@ export const getOneMyOrder = async (req, res, next) => {
       where: { order: { user_id: id }, order_id: orderId },
     });
 
-    // const newOrderItems = await Promise.all(
-    //   orderItems.map(async (orderItem) => {
-    //     if (
-    //       orderItem.ref_id === null ||
-    //       !orderItem.is_paid ||
-    //       orderItem.status === "Refund"
-    //     )
-    //       return orderItem;
-    //     //request here to get status and update
-    //     const response = await axios.get(
-    //       `https://iplusview.store/api?key=09d21f71d09164a03081ef2c7642cc0f&action=status&order=${orderItem.ref_id}`
-    //     );
-    //     const { status } = response.data;
-    //     return await prisma.orderItem.update({
-    //       where: { id: orderItem.id },
-    //       data: { status: status },
-    //     });
-    //   })
-    // );
+    const newOrderItems = await Promise.all(
+      orderItems.map(async (orderItem) => {
+        if (
+          orderItem.ref_id === null ||
+          !orderItem.is_paid ||
+          orderItem.status === "Refund"
+        )
+          return orderItem;
+        //request here to get status and update
+        const response = await axios.get(
+          `https://iplusview.store/api?key=09d21f71d09164a03081ef2c7642cc0f&action=status&order=${orderItem.ref_id}`
+        );
+        const { status } = response.data;
+        return await prisma.orderItem.update({
+          where: { id: orderItem.id },
+          data: { status: status },
+        });
+      })
+    );
 
     // const refundItems = newOrderItems.filter(
     //   (orderItem) => orderItem.status === "ex refund"
@@ -180,31 +180,31 @@ export const getOneMyOrder = async (req, res, next) => {
 export const getMyOrders = async (req, res, next) => {
   try {
     const { id } = req.currentUser;
-    // const orderItems = await prisma.orderItem.findMany({
-    //   where: { order: { user_id: id } },
-    // });
+    const orderItems = await prisma.orderItem.findMany({
+      where: { order: { user_id: id } },
+    });
 
-    // const newOrderItems = await Promise.all(
-    //   orderItems.map(async (orderItem) => {
-    //     // if (orderItem.ref_id === null && !orderItem.is_paid) return orderItem;
-    //     if (
-    //       orderItem.ref_id === null ||
-    //       !orderItem.is_paid ||
-    //       orderItem.status === "Refund"
-    //     )
-    //       return orderItem;
-    //     //request here to get status and update
-    //     const response = await axios.get(
-    //       `https://iplusview.store/api?key=09d21f71d09164a03081ef2c7642cc0f&action=status&order=${orderItem.ref_id}`
-    //     );
-    //     const { status } = response.data;
-    //     // refund  refund credit to customer
-    //     return await prisma.orderItem.update({
-    //       where: { id: orderItem.id },
-    //       data: { status: status },
-    //     });
-    //   })
-    // );
+    const newOrderItems = await Promise.all(
+      orderItems.map(async (orderItem) => {
+        // if (orderItem.ref_id === null && !orderItem.is_paid) return orderItem;
+        if (
+          orderItem.ref_id === null ||
+          !orderItem.is_paid ||
+          orderItem.status === "Refund"
+        )
+          return orderItem;
+        //request here to get status and update
+        const response = await axios.get(
+          `https://iplusview.store/api?key=09d21f71d09164a03081ef2c7642cc0f&action=status&order=${orderItem.ref_id}`
+        );
+        const { status } = response.data;
+        // refund  refund credit to customer
+        return await prisma.orderItem.update({
+          where: { id: orderItem.id },
+          data: { status: status },
+        });
+      })
+    );
 
     // const refundItems = newOrderItems.filter(
     //   (orderItem) => orderItem.status === "ex refund"
@@ -381,13 +381,8 @@ export const Profitperorder = async (req, res, next) => {
       },
     });
 
-    // สร้างตัวแปรเก็บข้อมูลกำไร
     const profitData = [];
-
-    // สร้างตัวแปรเก็บผลรวมกำไรทั้งหมด
     let totalProfitAllOrders = 0;
-
-    // วนลูปผ่านทุกรายการออร์เดอร์
     orders.forEach((order) => {
       const orderProfit = order.order_items.reduce((totalProfit, orderItem) => {
         if (orderItem.price !== undefined && orderItem.cost !== undefined) {
