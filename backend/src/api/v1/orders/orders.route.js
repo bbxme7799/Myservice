@@ -8,6 +8,7 @@ import {
   TotalReport,
   statisticReport,
   buyNow,
+  Profitperorder
 } from "./orders.controller.js";
 import { jwtAuthMiddleware } from "../../../middlewares/jwt-auth.middleware.js";
 import { BuyNowSchema, OrderIdSchema } from "./orders.shema.js";
@@ -25,11 +26,11 @@ router.post("/:userId", jwtAuthMiddleware, ordering);
 router.get("/", jwtAuthMiddleware, getMyOrders);
 router.get("/total-report", jwtAuthMiddleware, roleMiddleware(1), TotalReport);
 router.get("/statistic", statisticReport);
+router.get("/profit-perorder", jwtAuthMiddleware, roleMiddleware(1), Profitperorder);
 router.get(
   "/:orderId",
   jwtAuthMiddleware,
   validateRequestMiddleware({ params: OrderIdSchema }),
   getOneMyOrder
 );
-
 export { router as ordersRoute };

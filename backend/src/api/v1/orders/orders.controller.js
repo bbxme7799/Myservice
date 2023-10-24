@@ -371,3 +371,44 @@ export const buyNow = async (req, res, next) => {
     next(error);
   }
 };
+
+export const Profitperorder = async (req, res, next) => {
+  try {
+    // ดึงข้อมูลออร์เดอร์ทั้งหมด
+    const orders = await prisma.order.findMany({
+      include: {
+        orderItems: {
+          include: {
+            product: true,
+          },
+        },
+      },
+    });
+
+    // คำนวณกำไรต่อออร์เดอร์
+    const profitPerOrder = orders.map((order) => {
+      const orderProfit = order.orderItems.reduce((totalProfit, orderItem) => {
+        // คำนวณกำไรต่อรายการออร์เดอร์
+        const price = ((orderItem.product.rate * 1.5) / 1000) * orderItem.quantity;
+        const cost = ((orderItem.product.rate) / 1000) * orderItem.quantity;
+        const itemProfit = price - cost;
+
+        // เพิ่มกำไรจากรายการนี้เข้าไปในกำไรรวมของออร์เดอร์
+        return totalProfit + itemProfit;
+      }, 0);
+
+      return {
+        orderId: order.id,
+        orderProfit,
+      };
+    });
+
+    res.json({
+      profitPerOrder,
+    });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+};
+
