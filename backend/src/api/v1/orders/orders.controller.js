@@ -383,7 +383,7 @@ export const Profitperorder = async (req, res, next) => {
 
     // คำนวณกำไรต่อออร์เดอร์
     const profitPerOrder = orders.map((order) => {
-      const orderProfit = order.orderItems.reduce((totalProfit, orderItem) => {
+      const orderProfit = order.order_items.reduce((totalProfit, orderItem) => {
         // คำนวณกำไรต่อรายการออร์เดอร์
         const price = ((orderItem.product.rate * 1.5) / 1000) * orderItem.quantity;
         const cost = ((orderItem.product.rate) / 1000) * orderItem.quantity;
