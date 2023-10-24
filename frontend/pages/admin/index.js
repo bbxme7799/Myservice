@@ -98,7 +98,7 @@ export default function AdminDashBoardPage() {
         withCredentials: true,
       })
       .then((response) => {
-        setDataOrderProfit(response.data.data);
+        setDataOrderProfit(response.data.totalProfitAllOrders);
       })
       .catch((error) => {
         console.error("Error fetching total customers:", error);
@@ -145,7 +145,7 @@ export default function AdminDashBoardPage() {
                       />
                        <SaleItem
                         title="Total OrderProfit"
-                        amount={totalCustomers.toLocaleString()}
+                        amount={DataOrderProfit}
                         positive
                       />
                     </div>
