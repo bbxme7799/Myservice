@@ -5,7 +5,7 @@ import { PrismaClient } from "@prisma/client";
 import dotenv from "dotenv";
 const prisma = new PrismaClient();
 const provider = new ethers.JsonRpcProvider(
-  "https://bsc.getblock.io/1af81ade-1169-44f8-9595-e23e5df13bc2/testnet/"
+  "https://bsc.getblock.io/b2b0f76f-8d43-4f0e-b74e-b27de8e7fbfc/testnet/"
 );
 
 const contractAddress = "0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee";
