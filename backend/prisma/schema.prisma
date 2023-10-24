@@ -103,6 +103,7 @@ model OrderItem {
   service_name String   @db.VarChar(255)
   quantity     Int      @default(0)
   price        Decimal  @default(0.00)
+  cost         Decimal @default(0.00)
   ref_id       Int?
   is_paid      Boolean  @default(false)
   status       String
