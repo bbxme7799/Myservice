@@ -72,12 +72,12 @@ export const ordering = async (req, res, next) => {
                   service_name: orderItem.product.name,
                   is_paid: !orderItem.error,
                   price:
-                    ((orderItem.product.rate * 1.5) / 1000) *
+                    ((Number(orderItem.product.rate) * 1.5) / 1000) *
                     orderItem.quantity,
                   quantity: orderItem.quantity,
                   status: orderItem.error ? "Canceled" : "Pending",
                   cost:
-                  ((orderItem.product.rate) / 1000) * orderItem.quantity,
+                  ((Number(orderItem.product.rate)) / 1000) * orderItem.quantity,
                 })),
               },
             },
@@ -352,11 +352,11 @@ export const buyNow = async (req, res, next) => {
                 service_name: orderItem.product.name,
                 is_paid: !orderItem.error,
                 price:
-                  ((orderItem.product.rate * 1.5) / 1000) * orderItem.quantity,
+                  ((Number(orderItem.product.rate)) * 1.5 / 1000) * orderItem.quantity,
                 quantity: orderItem.quantity,
                 status: orderItem.error ? "Canceled" : "Pending",
                 cost:
-                  ((orderItem.product.rate) / 1000) * orderItem.quantity,
+                  ((Number(orderItem.product.rate)) / 1000) * orderItem.quantity,
               },
             },
           },
