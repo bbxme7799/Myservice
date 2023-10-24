@@ -377,11 +377,7 @@ export const Profitperorder = async (req, res, next) => {
     // ดึงข้อมูลออร์เดอร์ทั้งหมด
     const orders = await prisma.order.findMany({
       include: {
-        orderItems: {
-          include: {
-            product: true,
-          },
-        },
+        order_items: true,
       },
     });
 
