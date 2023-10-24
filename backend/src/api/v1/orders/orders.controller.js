@@ -135,7 +135,7 @@ export const getOneMyOrder = async (req, res, next) => {
           return orderItem;
         //request here to get status and update
         const response = await axios.get(
-          `https://iplusview.store/api?key=09d21f71d09164a03081ef2c7642cc0f&action=status&order=${orderItem.ref_id}`
+          `https://iplusview.store/api?key=445ffcff1322193be0a307e4a8918716&action=status&order=${orderItem.ref_id}`
         );
         const { status } = response.data;
         return await prisma.orderItem.update({
@@ -167,11 +167,8 @@ export const getOneMyOrder = async (req, res, next) => {
     //   })
     // );
     res.json({
-      data: orderItems,
+      data: newOrderItems,
     });
-    // res.json({
-    //   data: newOrderItems,
-    // });
   } catch (error) {
     console.log(error);
     next(error);
@@ -195,7 +192,7 @@ export const getMyOrders = async (req, res, next) => {
           return orderItem;
         //request here to get status and update
         const response = await axios.get(
-          `https://iplusview.store/api?key=09d21f71d09164a03081ef2c7642cc0f&action=status&order=${orderItem.ref_id}`
+          `https://iplusview.store/api?key=445ffcff1322193be0a307e4a8918716&action=status&order=${orderItem.ref_id}`
         );
         const { status } = response.data;
         // refund  refund credit to customer
@@ -228,7 +225,7 @@ export const getMyOrders = async (req, res, next) => {
     //   })
     // );
 
-    // console.log(newOrderItems);
+    console.log(newOrderItems);
     const orders = await prisma.order.findMany({ where: { user_id: id } });
     res.json({
       data: orders,
