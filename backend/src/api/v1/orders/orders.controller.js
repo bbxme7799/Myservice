@@ -138,9 +138,13 @@ export const getOneMyOrder = async (req, res, next) => {
           `https://iplusview.store/api?key=09d21f71d09164a03081ef2c7642cc0f&action=status&order=${orderItem.ref_id}`
         );
         const { status,start_count } = response.data;
+        // refund  refund credit to customer
         return await prisma.orderItem.update({
           where: { id: orderItem.id },
-          data: { status: status,start_count:start_count },
+          data: {
+            status: status,
+            start_count: start_count !== null ? start_count : 0, // Provide a default value if start_count is null
+          },
         });
       })
     );
@@ -198,7 +202,10 @@ export const getMyOrders = async (req, res, next) => {
         // refund  refund credit to customer
         return await prisma.orderItem.update({
           where: { id: orderItem.id },
-          data: { status: status,start_count:start_count },
+          data: {
+            status: status,
+            start_count: start_count !== null ? start_count : 0,
+          },
         });
       })
     );
