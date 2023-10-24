@@ -108,7 +108,8 @@ const SignInSection = () => {
 
       try {
         // Request access to accounts
-        await window.ethereum.enable();
+        await window.ethereum.request({ method: 'eth_requestAccounts' })
+
 
         const accounts = await web3.eth.getAccounts();
         const selectedAddress = accounts[0];
