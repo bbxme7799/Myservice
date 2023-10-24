@@ -72,12 +72,12 @@ export const ordering = async (req, res, next) => {
                   service_name: orderItem.product.name,
                   is_paid: !orderItem.error,
                   price:
-                    ((Number(orderItem.product.rate) * 1.5) / 1000) *
+                    ((orderItem.product.rate * 1.5) / 1000) *
                     orderItem.quantity,
                   quantity: orderItem.quantity,
                   status: orderItem.error ? "Canceled" : "Pending",
                   cost:
-                  ((Number(orderItem.product.rate)) / 1000) * orderItem.quantity,
+                  ((orderItem.product.rate) / 1000) * orderItem.quantity,
                 })),
               },
             },
@@ -135,7 +135,7 @@ export const getOneMyOrder = async (req, res, next) => {
           return orderItem;
         //request here to get status and update
         const response = await axios.get(
-          `https://iplusview.store/api?key=445ffcff1322193be0a307e4a8918716&action=status&order=${orderItem.ref_id}`
+          `https://iplusview.store/api?key=09d21f71d09164a03081ef2c7642cc0f&action=status&order=${orderItem.ref_id}`
         );
         const { status } = response.data;
         return await prisma.orderItem.update({
@@ -192,7 +192,7 @@ export const getMyOrders = async (req, res, next) => {
           return orderItem;
         //request here to get status and update
         const response = await axios.get(
-          `https://iplusview.store/api?key=445ffcff1322193be0a307e4a8918716&action=status&order=${orderItem.ref_id}`
+          `https://iplusview.store/api?key=09d21f71d09164a03081ef2c7642cc0f&action=status&order=${orderItem.ref_id}`
         );
         const { status } = response.data;
         // refund  refund credit to customer
@@ -352,11 +352,11 @@ export const buyNow = async (req, res, next) => {
                 service_name: orderItem.product.name,
                 is_paid: !orderItem.error,
                 price:
-                  ((Number(orderItem.product.rate)) * 1.5 / 1000) * orderItem.quantity,
+                  ((orderItem.product.rate * 1.5) / 1000) * orderItem.quantity,
                 quantity: orderItem.quantity,
                 status: orderItem.error ? "Canceled" : "Pending",
                 cost:
-                  ((Number(orderItem.product.rate)) / 1000) * orderItem.quantity,
+                  ((orderItem.product.rate) / 1000) * orderItem.quantity,
               },
             },
           },
