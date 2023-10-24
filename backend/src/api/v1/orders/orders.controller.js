@@ -327,13 +327,13 @@ export const buyNow = async (req, res, next) => {
       const response = await axios.get(
         `https://iplusview.store/api?key=09d21f71d09164a03081ef2c7642cc0f&action=add&service=${product.service}&link=${url}&quantity=${quantity}`
       );
-      console.log("🚀 response:", response);
+      // console.log("🚀 response:", response)
       const { order, error } = response.data;
-      orderItem = {
-        ...item,
-        order,
-        error: error ? true : false,
-      };
+orderItem = {
+  order,
+  error: error ? true : false,
+};
+
     } catch (error) {
       console.log("buyNow ~ error:", error);
       throw new BadRequestException(error);
