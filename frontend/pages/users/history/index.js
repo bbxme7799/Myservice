@@ -212,6 +212,9 @@ function index({ me }) {
                           <th scope="col" className="px-6 py-3">
                             status
                           </th>
+                          <th scope="col" className="px-6 py-3">
+                           start_count
+                          </th>
                           <th scope="col" className="relative py-3.5 px-4">
                             <span className="sr-only">Actions</span>
                           </th>
@@ -252,6 +255,9 @@ function index({ me }) {
                                     </td>
                                     <td className="px-6 py-3 text-sm">
                                       {orderGroup.data.length}
+                                    </td>
+                                    <td className="px-6 py-3 text-sm">
+                                      {order.start_count}
                                     </td>
                                   </>
                                 ) : null}
