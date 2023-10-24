@@ -384,23 +384,36 @@ export const Profitperorder = async (req, res, next) => {
     // คำนวณกำไรต่อออร์เดอร์
     const profitPerOrder = orders.map((order) => {
       const orderProfit = order.order_items.reduce((totalProfit, orderItem) => {
-        // คำนวณกำไรต่อรายการออร์เดอร์
-        const price = ((orderItem.product.rate * 1.5) / 1000) * orderItem.quantity;
-        const cost = ((orderItem.product.rate) / 1000) * orderItem.quantity;
-        const itemProfit = price - cost;
-
-        // เพิ่มกำไรจากรายการนี้เข้าไปในกำไรรวมของออร์เดอร์
+        const itemProfit = orderItem.products.reduce((totalProductProfit, product) => {
+          // ตรวจสอบว่าสินค้ามี rate หรือไม่
+          if (product.rate !== undefined) {
+            // คำนวณกำไรต่อรายการสินค้า
+            const price = ((product.rate * 1.5) / 1000) * orderItem.quantity;
+            const cost = (product.rate / 1000) * orderItem.quantity;
+            const productProfit = price - cost;
+    
+            // เพิ่มกำไรจากรายการสินค้านี้เข้าไปในกำไรรวมของรายการออร์เดอร์
+            return totalProductProfit + productProfit;
+          } else {
+            console.error('Product rate is undefined.');
+            return totalProductProfit;
+          }
+        }, 0);
+    
+        // เพิ่มกำไรจากรายการออร์เดอร์นี้เข้าไปในกำไรรวมของออร์เดอร์
         return totalProfit + itemProfit;
       }, 0);
-
+    
       return {
         orderId: order.id,
         orderProfit,
       };
     });
+    
 
     res.json({
       profitPerOrder,
+      cone:orders
     });
   } catch (error) {
     console.error(error);
