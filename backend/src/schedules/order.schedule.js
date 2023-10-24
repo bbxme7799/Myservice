@@ -77,15 +77,15 @@ export const refundSchedule = async () => {
                   data: {
                     total: { decrement: item.price },
                     user: { update: { balance: { increment: item.price } } },
+                    cost: { decrement: item.price }, // ลดค่า item.price จาก field cost
                   },
-                  // user: { update: { balance: { increment: item.price } } }, //update balance here
                 },
               },
             },
           });
         })
       );
-
+      
       console.log("------- finished refund schedule -------");
     } catch (error) {
       console.log(error);
