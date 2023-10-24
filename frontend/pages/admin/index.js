@@ -53,6 +53,7 @@ export default function AdminDashBoardPage() {
   const [totalDeposit, setTotalDeposit] = useState(0);
   const [totalWithdraw, setTotalWithdraw] = useState(0);
   const [DataTransaction, setDataTransaction] = useState(0);
+  const [DataOrderProfit, setDataOrderProfit] = useState(0);
 
   useEffect(() => {
     // Fetch total transactions data from the API
@@ -88,6 +89,16 @@ export default function AdminDashBoardPage() {
       })
       .then((response) => {
         setDataTransaction(response.data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching total customers:", error);
+      });
+      axios
+      .get(`${API_BASE_URL_CSR}/api/orders/profit-perorder`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setDataOrderProfit(response.data.data);
       })
       .catch((error) => {
         console.error("Error fetching total customers:", error);
@@ -129,6 +140,11 @@ export default function AdminDashBoardPage() {
                       />
                       <SaleItem
                         title="Total Customers"
+                        amount={totalCustomers.toLocaleString()}
+                        positive
+                      />
+                       <SaleItem
+                        title="Total OrderProfit"
                         amount={totalCustomers.toLocaleString()}
                         positive
                       />
