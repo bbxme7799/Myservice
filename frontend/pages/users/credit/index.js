@@ -63,6 +63,7 @@ export default function CreditPage({ me }) {
 
   const ethereumNodeUrl = process.env.ETHEREUM_NODE_URL;
   const web3 = new Web3(ethereumNodeUrl);
+  console.log("web3" ,web3)
 
   const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 
