@@ -381,12 +381,35 @@ export const Profitperorder = async (req, res, next) => {
       },
     });
 
+    // สร้างตัวแปรเก็บข้อมูลกำไร
+    const profitData = [];
+
+    // วนลูปผ่านทุกรายการออร์เดอร์
+    orders.forEach((order) => {
+      // คำนวณกำไรจากรายการ order_items
+      const orderProfit = order.order_items.reduce((totalProfit, orderItem) => {
+        // ตรวจสอบว่ามี price และ cost
+        if (orderItem.price !== undefined && orderItem.cost !== undefined) {
+          // คำนวณกำไรจากรายการ
+          const itemProfit = parseFloat(orderItem.price) - parseFloat(orderItem.cost);
+          return totalProfit + itemProfit;
+        } else {
+          console.error('Order item price or cost is undefined.');
+          return totalProfit;
+        }
+      }, 0);
+
+      profitData.push({
+        orderId: order.id,
+        orderProfit,
+      });
+    });
+
     res.json({
-      orders,
+      profitData,
     });
   } catch (error) {
     console.error(error);
     next(error);
   }
 };
-
