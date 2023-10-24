@@ -384,13 +384,13 @@ export const Profitperorder = async (req, res, next) => {
     // สร้างตัวแปรเก็บข้อมูลกำไร
     const profitData = [];
 
+    // สร้างตัวแปรเก็บผลรวมกำไรทั้งหมด
+    let totalProfitAllOrders = 0;
+
     // วนลูปผ่านทุกรายการออร์เดอร์
     orders.forEach((order) => {
-      // คำนวณกำไรจากรายการ order_items
       const orderProfit = order.order_items.reduce((totalProfit, orderItem) => {
-        // ตรวจสอบว่ามี price และ cost
         if (orderItem.price !== undefined && orderItem.cost !== undefined) {
-          // คำนวณกำไรจากรายการ
           const itemProfit = parseFloat(orderItem.price) - parseFloat(orderItem.cost);
           return totalProfit + itemProfit;
         } else {
@@ -403,10 +403,13 @@ export const Profitperorder = async (req, res, next) => {
         orderId: order.id,
         orderProfit,
       });
+
+      totalProfitAllOrders += orderProfit;
     });
 
     res.json({
       profitData,
+      totalProfitAllOrders,
     });
   } catch (error) {
     console.error(error);
