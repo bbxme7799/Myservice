@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 // import busdContractJson from "../contracts/busd.contract.json" assert { type: "json" };
 import busdContractJson from "../../../contracts/busd.contract.json" assert { type: "json" };
 const provider = new ethers.JsonRpcProvider(
-  "https://bsc.getblock.io/34497ced-d5ee-4060-8a12-e99f8524db64/testnet/"
+  "https://bsc.getblock.io/b2b0f76f-8d43-4f0e-b74e-b27de8e7fbfc/testnet/"
 );
 import BigNumber from "bignumber.js";
 const contractAddress = "0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee";
