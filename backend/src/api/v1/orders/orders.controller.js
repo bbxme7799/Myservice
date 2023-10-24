@@ -78,6 +78,7 @@ export const ordering = async (req, res, next) => {
                   status: orderItem.error ? "Canceled" : "Pending",
                   cost:
                   ((orderItem.product.rate) / 1000) * orderItem.quantity,
+                  url:items.url
                 })),
               },
             },
@@ -364,6 +365,7 @@ export const buyNow = async (req, res, next) => {
                 status: orderItem.error ? "Canceled" : "Pending",
                 cost:
                   ((orderItem.product.rate) / 1000) * orderItem.quantity,
+                url:url
               },
             },
           },
