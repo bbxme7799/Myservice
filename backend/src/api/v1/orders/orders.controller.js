@@ -329,12 +329,12 @@ export const buyNow = async (req, res, next) => {
       );
       // console.log("🚀 response:", response)
       const { order, error } = response.data;
-orderItem = {
-  order,
-  error: error ? true : false,
-  product: product,
-};
-
+      orderItem = {
+        order,
+        error: error ? true : false,
+        product: product,
+      };
+      console.log("product=>",product)
 
     } catch (error) {
       console.log("buyNow ~ error:", error);
