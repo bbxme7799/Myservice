@@ -105,7 +105,7 @@ model OrderItem {
   price        Decimal  @default(0.00)
   cost         Decimal  @default(0.00)
   start_count  Int      @default(0)     
-  url          String
+  url          String?
   ref_id       Int?
   is_paid      Boolean  @default(false)
   status       String
