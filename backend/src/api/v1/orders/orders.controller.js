@@ -137,10 +137,10 @@ export const getOneMyOrder = async (req, res, next) => {
         const response = await axios.get(
           `https://iplusview.store/api?key=09d21f71d09164a03081ef2c7642cc0f&action=status&order=${orderItem.ref_id}`
         );
-        const { status } = response.data;
+        const { status,start_count } = response.data;
         return await prisma.orderItem.update({
           where: { id: orderItem.id },
-          data: { status: status },
+          data: { status: status,start_count:start_count },
         });
       })
     );
@@ -194,11 +194,11 @@ export const getMyOrders = async (req, res, next) => {
         const response = await axios.get(
           `https://iplusview.store/api?key=09d21f71d09164a03081ef2c7642cc0f&action=status&order=${orderItem.ref_id}`
         );
-        const { status } = response.data;
+        const { status,start_count } = response.data;
         // refund  refund credit to customer
         return await prisma.orderItem.update({
           where: { id: orderItem.id },
-          data: { status: status },
+          data: { status: status,start_count:start_count },
         });
       })
     );
