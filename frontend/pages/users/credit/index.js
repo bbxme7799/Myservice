@@ -61,7 +61,7 @@ export default function CreditPage({ me }) {
   const CONTRACT_ADDRESS = process.env.CONTRACT_BUSD_ADDRESS;
   const recipientAddress = process.env.RECIPIENT_ADDRESS;
 
-  const ethereumNodeUrl = "https://bsc.getblock.io/1af81ade-1169-44f8-9595-e23e5df13bc2/testnet/";
+  const ethereumNodeUrl = process.env.ETHEREUM_NODE_URL;
   const web3 = new Web3(ethereumNodeUrl);
   console.log("web3" ,web3)
 
