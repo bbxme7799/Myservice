@@ -1,5 +1,6 @@
 import React from "react";
 import StatusBadge from "./StatusBadge";
+import Link from "next/link";
 
 const OrderDetailsModal = ({
   isOpen,
@@ -92,7 +93,7 @@ const OrderDetailsModal = ({
                 Start Count: {order.start_count}
               </p>
               <p className="text-xs text-gray-600">
-                Start Count: <a>{order.url}</a>
+                URL : <Link>{order.url}</Link>
               </p>
 
               <p className="text-xs text-gray-600">Price: {order.price}</p>
