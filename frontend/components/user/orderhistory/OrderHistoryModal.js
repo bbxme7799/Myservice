@@ -1,6 +1,6 @@
 import React from "react";
 import StatusBadge from "./StatusBadge";
-import Link from "next/link";
+
 
 const OrderDetailsModal = ({
   isOpen,
@@ -93,8 +93,9 @@ const OrderDetailsModal = ({
                 Start Count: {order.start_count}
               </p>
               <p className="text-xs text-gray-600">
-                URL : <Link>{order.url}</Link>
-              </p>
+              URL: <a href={order.url} target="_blank" rel="noopener noreferrer">{order.url}</a>
+            </p>
+
 
               <p className="text-xs text-gray-600">Price: {order.price}</p>
               <hr className="my-1 border-gray-300" />
