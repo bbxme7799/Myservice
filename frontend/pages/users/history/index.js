@@ -210,10 +210,10 @@ function index({ me }) {
                             count
                           </th>
                           <th scope="col" className="px-6 py-3">
-                            status
+                          start_count
                           </th>
                           <th scope="col" className="px-6 py-3">
-                           start_count
+                           status
                           </th>
                           <th scope="col" className="relative py-3.5 px-4">
                             <span className="sr-only">Actions</span>
@@ -267,7 +267,7 @@ function index({ me }) {
                                     rowSpan={orderGroup.data.length}
                                   >
                                     <StatusBadge status={order.status} />
-                                  </td>
+                                  </td> 
                                 ) : null}
                                 {orderIndex === 0 ? (
                                   <td
