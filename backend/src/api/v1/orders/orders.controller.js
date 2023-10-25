@@ -326,6 +326,7 @@ export const buyNow = async (req, res, next) => {
     });
     if (!product) throw new BadRequestException("Product not found");
     const total = ((product.rate * 1.5) / 1000) * quantity;
+    const totalnot = ((product.rate) / 1000) * quantity;
 
     if (total > user.balance || user.balance - total < 0)
       throw new BadRequestException("Insufficient balance");
@@ -359,12 +360,10 @@ export const buyNow = async (req, res, next) => {
                 ref_id: orderItem?.order ? orderItem?.order : null,
                 service_name: orderItem.product.name,
                 is_paid: !orderItem.error,
-                price:
-                  ((orderItem.product.rate * 1.5) / 1000) * orderItem.quantity,
+                price:total,
                 quantity: orderItem.quantity,
                 status: orderItem.error ? "Canceled" : "Pending",
-                cost:
-                  ((orderItem.product.rate) / 1000) * orderItem.quantity,
+                cost:totalnot,
                 url:url
               },
             },
