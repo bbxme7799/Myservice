@@ -222,6 +222,7 @@ export default function User({ me }) {
               withCredentials: true,
             }
           );
+          console.log("response =>" ,response)
 
           if (response.status === 201 || response.status === 200) {
             // คำสั่งซื้อสำเร็จ
