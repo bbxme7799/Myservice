@@ -1,20 +1,26 @@
-import React, { useState, useEffect } from "react";
-import StatusBadge from "./StatusBadge";
+  import React from "react";
+  import StatusBadge from "./StatusBadge";
 
-const OrderDetailsModal = ({
-  isOpen,
-  onClose,
-  selectedOrder,
-  orderDataDetails,
-}) => {
-  // ... ตัวอย่างโค้ดที่เหมือนเดิม
 
-  const [uniqueUrls, setUniqueUrls] = useState(new Set());
+  const OrderDetailsModal = ({
+    isOpen,
+    onClose,
+    selectedOrder,
+    orderDataDetails,
+  }) => {
+    console.log(
+      "🚀 ~ file: OrderHistoryModal.js:9 ~ selectedOrder:",
+      selectedOrder
+    );
+    console.log(
+      "🚀 ~ file: OrderHistoryModal.js:4 ~ OrderDetailsModal ~ orderDataDetails:",
+      orderDataDetails
+    );
+    if (!isOpen) return null;
 
-  useEffect(() => {
     // ตรวจสอบว่า orderDataDetails มีค่าหรือไม่
     if (!orderDataDetails) {
-      return;
+      return <div>Loading...</div>;
     }
 
     // หาข้อมูลในอาร์เรย์ซ้อนที่เกี่ยวข้องกับคำสั่งนี้
@@ -24,22 +30,8 @@ const OrderDetailsModal = ({
 
     // ถ้าไม่พบข้อมูลที่เกี่ยวข้อง ให้แสดงข้อความ "Order not found"
     if (!relevantArray) {
-      return;
+      return <div>Order not found</div>;
     }
-
-    // กรองรายการที่เกี่ยวข้องกับคำสั่งนี้
-    const filteredOrders = relevantArray.data.filter(
-      (order) => order.order_id === selectedOrder.order_id
-    );
-
-    // ใช้ Set เพื่อเก็บ URL ที่ไม่ซ้ำ
-    const urlsSet = new Set();
-    filteredOrders.forEach((order) => {
-      urlsSet.add(order.url);
-    });
-
-    setUniqueUrls(urlsSet);
-  }, [orderDataDetails, selectedOrder]);
 
     // กรองรายการที่เกี่ยวข้องกับคำสั่งนี้
     const filteredOrders = relevantArray.data.filter(
@@ -102,7 +94,7 @@ const OrderDetailsModal = ({
                   Start Count: {order.start_count}
                 </p>
                 <p className="text-xs text-gray-600">
-                URL: <a href={order.url} target="_blank" rel="noopener noreferrer">{order.url}</a>
+                URL: {order.url}
               </p>
 
 
