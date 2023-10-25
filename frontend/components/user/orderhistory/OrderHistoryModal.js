@@ -91,6 +91,10 @@ const OrderDetailsModal = ({
               <p className="text-xs text-gray-600">
                 Start Count: {order.start_count}
               </p>
+              <p className="text-xs text-gray-600">
+                Start Count: <a>{order.url}</a>
+              </p>
+
               <p className="text-xs text-gray-600">Price: {order.price}</p>
               <hr className="my-1 border-gray-300" />
             </div>
