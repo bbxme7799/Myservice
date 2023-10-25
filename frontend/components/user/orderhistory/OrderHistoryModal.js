@@ -37,6 +37,7 @@ const OrderDetailsModal = ({
   const filteredOrders = relevantArray.data.filter(
     (order) => order.order_id === selectedOrder.order_id
   );
+  console.log("filteredOrders =>",filteredOrders)
 
   // คำนวณราคารวมของรายการที่ไม่ใช่ "Canceled" และ "Refund"
   const totalNonCanceledPrice = filteredOrders
