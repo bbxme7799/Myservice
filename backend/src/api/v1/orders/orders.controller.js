@@ -343,7 +343,7 @@ export const buyNow = async (req, res, next) => {
         error: error ? true : false,
         product: product,
       };
-      console.log("product=>",product)
+      console.log("orderItem=>",orderItem)
 
     } catch (error) {
       console.log("buyNow ~ error:", error);
