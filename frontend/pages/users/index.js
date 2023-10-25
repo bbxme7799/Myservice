@@ -222,20 +222,28 @@ export default function User({ me }) {
               withCredentials: true,
             }
           );
-          console.log("response =>" ,response)
+          console.log("response =>" ,response.data)
 
-          if (response.status === 201 || response.status === 200) {
-            // คำสั่งซื้อสำเร็จ
-            console.log("Order confirmed!");
-            toast.success("คำสั่งซื้อสำเร็จ!", {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-            });
-          }
+           // Access the status code from the response
+  const statusCode = response.status;
+
+  // Check if the status code is either 201 or 200
+  if (statusCode === 201 || statusCode === 200) {
+    // Purchase order successful
+    console.log("Order confirmed!");
+    toast.success("คำสั่งซื้อสำเร็จ!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  } else {
+    // Handle other status codes if needed
+    console.log("Unexpected status code:", statusCode);
+    // Handle accordingly, you may want to show an error message to the user
+  }
         } catch (error) {
           console.error("Error placing order:", error);
           toast.error("เกิดข้อผิดพลาดในการสั่งซื้อ โปรดลองอีกครั้ง", {
