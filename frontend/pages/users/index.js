@@ -223,7 +223,7 @@ export default function User({ me }) {
             }
           );
 
-          if (response.status === 201) {
+          if (response.status === 201 || response.status === 200) {
             // คำสั่งซื้อสำเร็จ
             console.log("Order confirmed!");
             toast.success("คำสั่งซื้อสำเร็จ!", {
