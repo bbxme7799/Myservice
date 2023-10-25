@@ -361,7 +361,7 @@ export const buyNow = async (req, res, next) => {
                 service_name: orderItem.product.name,
                 is_paid: !orderItem.error,
                 price:total,
-                quantity: orderItem.quantity,
+                quantity: quantity,
                 status: orderItem.error ? "Canceled" : "Pending",
                 cost:totalnot,
                 url:url
