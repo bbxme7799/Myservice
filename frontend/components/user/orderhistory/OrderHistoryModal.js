@@ -94,7 +94,7 @@
                   Start Count: {order.start_count}
                 </p>
                 <p className="text-xs text-gray-600">
-                URL: {order.url}
+                URL: <a href={order.url} target="_blank" rel="noopener noreferrer">{order.url}</a>
               </p>
 
 
